@@ -1,16 +1,20 @@
-## Put comments here that give an overall description of what your
-## functions do
 
 ## creates a special "matrix" object that can cache its inverse.
 makeCacheMatrix <- function(x = matrix()) {
   inv <- NULL
+  
+  #define the various get and set functions
   set <- function(y) {
+    # this functions has multiple actions -- it needs '{}'
     x <<- y
     inv <<- NULL
   }
   get <- function() x
   set_matrix <- function(inverse) inv <<- inverse
   get_matrix <- function() inv
+  
+  #Make get and set functions available to other functions
+  #specifically the cacheSolve function
   list(set = set, get = get,
        set_matrix = set_matrix,
        get_matrix = get_matrix)
